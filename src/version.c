@@ -31,11 +31,17 @@ void print_version_info(char *progname)
 	     pkcs11_ll_basename(progname) );
     fprintf( stderr, "arch/CPU/OS: %s/%s/%s\n", TARGET_ARCH_TYPE, TARGET_CPU_TYPE,TARGET_OS_TYPE);
     fprintf( stderr, "using openssl library: %s\n", pkcs11_openssl_version() );
+#ifdef HAVE_DUPLICATES_ENABLED
+    fprintf( stderr, "compiled with enable duplicate extentions\n");
+#endif
 #if defined(HAVE_NCIPHER)
     fprintf( stderr, "compiled with nCipher extensions\n");
 #endif
 #if defined(HAVE_LUNA)
     fprintf( stderr, "compiled with Gemalto Safenet Luna extensions\n");
+#endif
+#if defined(HAVE_AWSCLOUDHSM)
+    fprintf( stderr, "compiled with AWS CloudHSM extensions\n");
 #endif
     exit( RC_ERROR_USAGE );
 }

@@ -2,7 +2,12 @@
 #define yyHEADER_H 1
 #define yyIN_HEADER 1
 
-#line 6 "wrappedkey_lexer.h"
+#line 25 "wrappedkey_lexer.l"
+#include <config.h>
+
+
+
+#line 11 "wrappedkey_lexer.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -17,16 +22,6 @@
 #endif
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
-
-#if defined(__FreeBSD__)
-#ifndef __STDC_LIMIT_MACROS
-#define	__STDC_LIMIT_MACROS
-#endif
-#include <sys/cdefs.h>
-#include <stdint.h>
-#else
-#define	__dead2
-#endif
 
 /* begin standard C headers. */
 #include <stdio.h>
@@ -43,8 +38,7 @@
 
 /* C99 systems have <inttypes.h>. Non-C99 systems may or may not. */
 
-#if defined(__FreeBSD__) || \
-    (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
+#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
 /* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
  * if you want the limit (max/min) macros for int types. 
@@ -327,9 +321,9 @@ extern int yylex (void);
 #undef YY_DECL
 #endif
 
-#line 202 "wrappedkey_lexer.l"
+#line 205 "wrappedkey_lexer.l"
 
 
-#line 334 "wrappedkey_lexer.h"
+#line 328 "wrappedkey_lexer.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */

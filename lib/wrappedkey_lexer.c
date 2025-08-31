@@ -1,5 +1,9 @@
+#line 25 "wrappedkey_lexer.l"
+#include <config.h>
 
-#line 3 "wrappedkey_lexer.c"
+
+
+#line 7 "wrappedkey_lexer.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -14,16 +18,6 @@
 #endif
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
-
-#if defined(__FreeBSD__)
-#ifndef __STDC_LIMIT_MACROS
-#define	__STDC_LIMIT_MACROS
-#endif
-#include <sys/cdefs.h>
-#include <stdint.h>
-#else
-#define	__dead2
-#endif
 
 /* begin standard C headers. */
 #include <stdio.h>
@@ -40,8 +34,7 @@
 
 /* C99 systems have <inttypes.h>. Non-C99 systems may or may not. */
 
-#if defined(__FreeBSD__) || \
-    (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
+#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
 /* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
  * if you want the limit (max/min) macros for int types. 
@@ -287,7 +280,6 @@ static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
 #define YY_CURRENT_BUFFER ( (yy_buffer_stack) \
                           ? (yy_buffer_stack)[(yy_buffer_stack_top)] \
                           : NULL)
-#define yy_current_buffer YY_CURRENT_BUFFER
 
 /* Same as previous macro, but useful when we know that the buffer stack is not
  * NULL or when we need an lvalue. For internal use only.
@@ -376,7 +368,7 @@ extern char *yytext;
 static yy_state_type yy_get_previous_state (void );
 static yy_state_type yy_try_NUL_trans (yy_state_type current_state  );
 static int yy_get_next_buffer (void );
-static void yy_fatal_error (yyconst char msg[]  ) __dead2;
+static void yy_fatal_error (yyconst char msg[]  );
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -1139,8 +1131,8 @@ char *yytext;
  * limitations under the License.
  */
 /* %option debug */
-#line 25 "wrappedkey_lexer.l"
-#include "config.h"
+
+#line 29 "wrappedkey_lexer.l"
 #include <stdarg.h>
 #include "wrappedkey_parser.h"
 
@@ -1148,7 +1140,7 @@ char *yytext;
 #define PUBLIC_KEY_EPILOG "-----END PUBLIC KEY-----"
 
 
-#line 1152 "wrappedkey_lexer.c"
+#line 1144 "wrappedkey_lexer.c"
 
 #define INITIAL 0
 #define OUTERKEYPEM 1
@@ -1211,9 +1203,7 @@ extern int yywrap (void );
 #endif
 #endif
 
-#ifndef YY_NO_UNPUT
     static void yyunput (int c,char *buf_ptr  );
-#endif
     
 #ifndef yytext_ptr
 static void yy_flex_strncpy (char *,yyconst char *,int );
@@ -1335,14 +1325,14 @@ extern int yylex (void);
  */
 YY_DECL
 {
-	yy_state_type yy_current_state;
-	char *yy_cp, *yy_bp;
-	int yy_act;
+	register yy_state_type yy_current_state;
+	register char *yy_cp, *yy_bp;
+	register int yy_act;
     
-#line 35 "wrappedkey_lexer.l"
+#line 38 "wrappedkey_lexer.l"
 
 
-#line 1346 "wrappedkey_lexer.c"
+#line 1336 "wrappedkey_lexer.c"
 
 	if ( !(yy_init) )
 		{
@@ -1387,7 +1377,7 @@ YY_DECL
 yy_match:
 		do
 			{
-			YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
+			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
 			if ( yy_accept[yy_current_state] )
 				{
 				(yy_last_accepting_state) = yy_current_state;
@@ -1413,7 +1403,7 @@ yy_find_action:
 
 		if ( yy_act != YY_END_OF_BUFFER && yy_rule_can_match_eol[yy_act] )
 			{
-			yy_size_t yyl;
+			int yyl;
 			for ( yyl = 0; yyl < yyleng; ++yyl )
 				if ( yytext[yyl] == '\n' )
 					   
@@ -1434,75 +1424,75 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 37 "wrappedkey_lexer.l"
+#line 40 "wrappedkey_lexer.l"
 { /* skipping comment */ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 39 "wrappedkey_lexer.l"
+#line 42 "wrappedkey_lexer.l"
 { BEGIN(OUTERKEYPEM); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 40 "wrappedkey_lexer.l"
+#line 43 "wrappedkey_lexer.l"
 { BEGIN(INNERKEYPEM); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 41 "wrappedkey_lexer.l"
+#line 44 "wrappedkey_lexer.l"
 { BEGIN(PUBKPEM); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 43 "wrappedkey_lexer.l"
+#line 46 "wrappedkey_lexer.l"
 { BEGIN(INITIAL); return OUTER; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 44 "wrappedkey_lexer.l"
+#line 47 "wrappedkey_lexer.l"
 { BEGIN(INITIAL); return INNER; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 45 "wrappedkey_lexer.l"
+#line 48 "wrappedkey_lexer.l"
 { BEGIN(INITIAL); return PUBK; }
 	YY_BREAK
 case YY_STATE_EOF(OUTERKEYPEM):
 case YY_STATE_EOF(INNERKEYPEM):
 case YY_STATE_EOF(PUBKPEM):
-#line 47 "wrappedkey_lexer.l"
+#line 50 "wrappedkey_lexer.l"
 { yyerror(NULL, "Incomplete PEM block"); yyterminate(); }
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 48 "wrappedkey_lexer.l"
+#line 51 "wrappedkey_lexer.l"
 { yylval.val_pem = (unsigned char *)strdup(yytext); }
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 49 "wrappedkey_lexer.l"
+#line 52 "wrappedkey_lexer.l"
 { /* ignore initial line feed */ }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 51 "wrappedkey_lexer.l"
+#line 54 "wrappedkey_lexer.l"
 { yylval.val_str.len=0; BEGIN(STR); }
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 52 "wrappedkey_lexer.l"
+#line 55 "wrappedkey_lexer.l"
 { yylval.val_str.val = strdup(yytext); yylval.val_str.len = strlen(yytext); }
 	YY_BREAK
 case YY_STATE_EOF(STR):
-#line 53 "wrappedkey_lexer.l"
+#line 56 "wrappedkey_lexer.l"
 { yyerror(NULL, "Unterminated quoted string"); yyterminate(); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 54 "wrappedkey_lexer.l"
+#line 57 "wrappedkey_lexer.l"
 {   /* special case: if we have an empty string, regular rule is never executed */
 		/* in which case, we perform the empty string assignment from here */
                 if (yylval.val_str.len==0) { yylval.val_str.val=strdup(""); } BEGIN(INITIAL); return STRING;
@@ -1510,377 +1500,377 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 59 "wrappedkey_lexer.l"
+#line 62 "wrappedkey_lexer.l"
 { return CTYPE; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 60 "wrappedkey_lexer.l"
+#line 63 "wrappedkey_lexer.l"
 { yylval.val_contenttype = ct_appl_p11; return CTYPE_VAL; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 62 "wrappedkey_lexer.l"
+#line 65 "wrappedkey_lexer.l"
 { return WRAPPING_ALG; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 63 "wrappedkey_lexer.l"
+#line 66 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_pkcs1_15; return PKCS1ALGO; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 64 "wrappedkey_lexer.l"
+#line 67 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_pkcs1_oaep; return OAEPALGO;  }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 65 "wrappedkey_lexer.l"
+#line 68 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_cbcpad; return CBCPADALGO;  }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 66 "wrappedkey_lexer.l"
+#line 69 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_rfc3394; return RFC3394ALGO;  }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 67 "wrappedkey_lexer.l"
+#line 70 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_rfc5649; return RFC5649ALGO;  }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 68 "wrappedkey_lexer.l"
+#line 71 "wrappedkey_lexer.l"
 { yylval.val_wrappingmethod = w_envelope; return ENVELOPEALGO; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 70 "wrappedkey_lexer.l"
+#line 73 "wrappedkey_lexer.l"
 { return WRAPPING_KEY; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 71 "wrappedkey_lexer.l"
+#line 74 "wrappedkey_lexer.l"
 { return GRAMMAR_VERSION; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 73 "wrappedkey_lexer.l"
+#line 76 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_ID; return CKATTR_STR; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 74 "wrappedkey_lexer.l"
+#line 77 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_LABEL; return CKATTR_STR; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 75 "wrappedkey_lexer.l"
+#line 78 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_CLASS; return CKATTR_CLASS; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 76 "wrappedkey_lexer.l"
+#line 79 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_TOKEN; return CKATTR_BOOL; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 77 "wrappedkey_lexer.l"
+#line 80 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_KEY_TYPE; return CKATTR_KEY; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 78 "wrappedkey_lexer.l"
+#line 81 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_SUBJECT; return CKATTR_STR; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 79 "wrappedkey_lexer.l"
+#line 82 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_ENCRYPT; return CKATTR_BOOL; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 80 "wrappedkey_lexer.l"
+#line 83 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_DECRYPT; return CKATTR_BOOL; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 81 "wrappedkey_lexer.l"
+#line 84 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_WRAP; return CKATTR_BOOL; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 82 "wrappedkey_lexer.l"
+#line 85 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_UNWRAP; return CKATTR_BOOL; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 83 "wrappedkey_lexer.l"
+#line 86 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_SIGN; return CKATTR_BOOL; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 84 "wrappedkey_lexer.l"
+#line 87 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_SIGN_RECOVER; return CKATTR_BOOL; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 85 "wrappedkey_lexer.l"
+#line 88 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_VERIFY; return CKATTR_BOOL; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 86 "wrappedkey_lexer.l"
+#line 89 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_VERIFY_RECOVER; return CKATTR_BOOL; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 87 "wrappedkey_lexer.l"
+#line 90 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_DERIVE; return CKATTR_BOOL; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 88 "wrappedkey_lexer.l"
+#line 91 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_PRIVATE; return CKATTR_BOOL; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 89 "wrappedkey_lexer.l"
+#line 92 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_SENSITIVE; return CKATTR_BOOL; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 90 "wrappedkey_lexer.l"
+#line 93 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_EXTRACTABLE; return CKATTR_BOOL; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 91 "wrappedkey_lexer.l"
+#line 94 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_MODIFIABLE; return CKATTR_BOOL; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 92 "wrappedkey_lexer.l"
+#line 95 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_START_DATE; return CKATTR_DATE; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 93 "wrappedkey_lexer.l"
+#line 96 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_END_DATE; return CKATTR_DATE; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 94 "wrappedkey_lexer.l"
+#line 97 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_CHECK_VALUE; return CKATTR_STR; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 95 "wrappedkey_lexer.l"
+#line 98 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_EC_PARAMS; return CKATTR_STR; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 96 "wrappedkey_lexer.l"
+#line 99 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_TRUSTED; return CKATTR_BOOL; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 97 "wrappedkey_lexer.l"
+#line 100 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_WRAP_WITH_TRUSTED; return CKATTR_BOOL; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 98 "wrappedkey_lexer.l"
+#line 101 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_WRAP_TEMPLATE; return CKATTR_TEMPLATE; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 99 "wrappedkey_lexer.l"
+#line 102 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_UNWRAP_TEMPLATE; return CKATTR_TEMPLATE; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 100 "wrappedkey_lexer.l"
+#line 103 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_DERIVE_TEMPLATE; return CKATTR_TEMPLATE; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 101 "wrappedkey_lexer.l"
+#line 104 "wrappedkey_lexer.l"
 { yylval.ckattr = CKA_ALLOWED_MECHANISMS; return CKATTR_ALLOWEDMECH; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 103 "wrappedkey_lexer.l"
+#line 106 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_GENERIC_SECRET; return KEYTYPE; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 104 "wrappedkey_lexer.l"
+#line 107 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_DES           ; return KEYTYPE; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 105 "wrappedkey_lexer.l"
+#line 108 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_DES2          ; return KEYTYPE; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 106 "wrappedkey_lexer.l"
+#line 109 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_DES3          ; return KEYTYPE; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 107 "wrappedkey_lexer.l"
+#line 110 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_AES           ; return KEYTYPE; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 108 "wrappedkey_lexer.l"
+#line 111 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_MD5_HMAC      ; return KEYTYPE; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 109 "wrappedkey_lexer.l"
+#line 112 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_SHA_1_HMAC    ; return KEYTYPE; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 110 "wrappedkey_lexer.l"
+#line 113 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_RIPEMD128_HMAC; return KEYTYPE; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 111 "wrappedkey_lexer.l"
+#line 114 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_RIPEMD160_HMAC; return KEYTYPE; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 112 "wrappedkey_lexer.l"
+#line 115 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_SHA256_HMAC   ; return KEYTYPE; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 113 "wrappedkey_lexer.l"
+#line 116 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_SHA384_HMAC   ; return KEYTYPE; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 114 "wrappedkey_lexer.l"
+#line 117 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_SHA512_HMAC   ; return KEYTYPE; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 115 "wrappedkey_lexer.l"
+#line 118 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_SHA224_HMAC   ; return KEYTYPE; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 116 "wrappedkey_lexer.l"
+#line 119 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_RSA           ; return KEYTYPE; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 117 "wrappedkey_lexer.l"
+#line 120 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_DH            ; return KEYTYPE; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 118 "wrappedkey_lexer.l"
+#line 121 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_DSA           ; return KEYTYPE; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 119 "wrappedkey_lexer.l"
+#line 122 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_EC            ; return KEYTYPE; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 120 "wrappedkey_lexer.l"
+#line 123 "wrappedkey_lexer.l"
 { yylval.val_key = CKK_EC_EDWARDS    ; return KEYTYPE; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 122 "wrappedkey_lexer.l"
+#line 125 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_DATA ; return OCLASS; }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 123 "wrappedkey_lexer.l"
+#line 126 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_CERTIFICATE ; return OCLASS; }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 124 "wrappedkey_lexer.l"
+#line 127 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_PUBLIC_KEY ; return OCLASS; }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 125 "wrappedkey_lexer.l"
+#line 128 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_PRIVATE_KEY ; return OCLASS; }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 126 "wrappedkey_lexer.l"
+#line 129 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_SECRET_KEY ; return OCLASS; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 127 "wrappedkey_lexer.l"
+#line 130 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_HW_FEATURE ; return OCLASS; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 128 "wrappedkey_lexer.l"
+#line 131 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_DOMAIN_PARAMETERS ; return OCLASS; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 129 "wrappedkey_lexer.l"
+#line 132 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_MECHANISM ; return OCLASS; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 130 "wrappedkey_lexer.l"
+#line 133 "wrappedkey_lexer.l"
 { yylval.val_cls = CKO_OTP_KEY ; return OCLASS; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 132 "wrappedkey_lexer.l"
+#line 135 "wrappedkey_lexer.l"
 { return PARAMMGF; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 133 "wrappedkey_lexer.l"
+#line 136 "wrappedkey_lexer.l"
 { yylval.val_mgf = CKG_MGF1_SHA1; return MGFTYPE; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 134 "wrappedkey_lexer.l"
+#line 137 "wrappedkey_lexer.l"
 { yylval.val_mgf = CKG_MGF1_SHA224; return MGFTYPE; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 135 "wrappedkey_lexer.l"
+#line 138 "wrappedkey_lexer.l"
 { yylval.val_mgf = CKG_MGF1_SHA256; return MGFTYPE; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 136 "wrappedkey_lexer.l"
+#line 139 "wrappedkey_lexer.l"
 { yylval.val_mgf = CKG_MGF1_SHA384; return MGFTYPE; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 137 "wrappedkey_lexer.l"
+#line 140 "wrappedkey_lexer.l"
 { yylval.val_mgf = CKG_MGF1_SHA512; return MGFTYPE; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 139 "wrappedkey_lexer.l"
+#line 142 "wrappedkey_lexer.l"
 { return PARAMHASH; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 141 "wrappedkey_lexer.l"
+#line 144 "wrappedkey_lexer.l"
 { yylval.val_mech = pkcs11_get_mechanism_type_from_name(yytext);
                      if (yylval.val_mech==0xFFFFFFFF) {
 			yyerror(NULL, "Unknown mechanism identifier <%s>", yytext);
@@ -1891,67 +1881,67 @@ YY_RULE_SETUP
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 149 "wrappedkey_lexer.l"
+#line 152 "wrappedkey_lexer.l"
 { return PARAMLABEL; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 150 "wrappedkey_lexer.l"
+#line 153 "wrappedkey_lexer.l"
 { return PARAMIV; }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 151 "wrappedkey_lexer.l"
+#line 154 "wrappedkey_lexer.l"
 { return PARAMFLAVOUR; }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 152 "wrappedkey_lexer.l"
+#line 155 "wrappedkey_lexer.l"
 { yylval.val_mech = CKM_NSS_AES_KEY_WRAP_PAD; return CKMECH; }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 153 "wrappedkey_lexer.l"
+#line 156 "wrappedkey_lexer.l"
 { return PARAMOUTER; }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 154 "wrappedkey_lexer.l"
+#line 157 "wrappedkey_lexer.l"
 { return PARAMINNER; }
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 156 "wrappedkey_lexer.l"
+#line 159 "wrappedkey_lexer.l"
 { return WRAPPINGJOBHEADER; }
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 157 "wrappedkey_lexer.l"
+#line 160 "wrappedkey_lexer.l"
 { return P_WRAPPINGKEY; }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 158 "wrappedkey_lexer.l"
+#line 161 "wrappedkey_lexer.l"
 { return P_FILENAME; }
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 159 "wrappedkey_lexer.l"
+#line 162 "wrappedkey_lexer.l"
 { return P_ALGORITHM; }
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 161 "wrappedkey_lexer.l"
+#line 164 "wrappedkey_lexer.l"
 { yylval.val_bool = 1; return TOK_BOOLEAN; }
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 162 "wrappedkey_lexer.l"
+#line 165 "wrappedkey_lexer.l"
 { yylval.val_bool = 0; return TOK_BOOLEAN; }
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 165 "wrappedkey_lexer.l"
+#line 168 "wrappedkey_lexer.l"
 {   if(strlen(yytext)%2==1) {
 			yyerror(NULL, "Invalid hexadecimal string <%s>: odd length", yytext);
 			yyterminate();
@@ -1982,32 +1972,32 @@ YY_RULE_SETUP
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 193 "wrappedkey_lexer.l"
+#line 196 "wrappedkey_lexer.l"
 { memcpy(yylval.val_date.as_buffer, yytext, 8); return TOK_DATE; }
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 195 "wrappedkey_lexer.l"
+#line 198 "wrappedkey_lexer.l"
 { yylval.val_dottednumber = strdup(yytext); return DOTTEDNUMBER; }
 	YY_BREAK
 case 103:
 /* rule 103 can match eol */
 YY_RULE_SETUP
-#line 197 "wrappedkey_lexer.l"
+#line 200 "wrappedkey_lexer.l"
 { /* ignore whitespace */ }
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 199 "wrappedkey_lexer.l"
+#line 202 "wrappedkey_lexer.l"
 { return yytext[0]; } /* catch-all http://stackoverflow.com/questions/18837828/how-should-i-handle-lexical-errors-in-my-flex-lexer */
 	YY_BREAK
 /* gives it back to bison, so error comes from parser */
 case 105:
 YY_RULE_SETUP
-#line 202 "wrappedkey_lexer.l"
+#line 205 "wrappedkey_lexer.l"
 ECHO;
 	YY_BREAK
-#line 2011 "wrappedkey_lexer.c"
+#line 2001 "wrappedkey_lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2150,9 +2140,9 @@ case YY_STATE_EOF(INITIAL):
  */
 static int yy_get_next_buffer (void)
 {
-    	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	char *source = (yytext_ptr);
-	int number_to_move, i;
+    	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+	register char *source = (yytext_ptr);
+	register int number_to_move, i;
 	int ret_val;
 
 	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
@@ -2284,15 +2274,15 @@ static int yy_get_next_buffer (void)
 
     static yy_state_type yy_get_previous_state (void)
 {
-	yy_state_type yy_current_state;
-	char *yy_cp;
+	register yy_state_type yy_current_state;
+	register char *yy_cp;
     
 	yy_current_state = (yy_start);
 	yy_current_state += YY_AT_BOL();
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
-		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -2317,10 +2307,10 @@ static int yy_get_next_buffer (void)
  */
     static yy_state_type yy_try_NUL_trans  (yy_state_type yy_current_state )
 {
-	int yy_is_jam;
-    	char *yy_cp = (yy_c_buf_p);
+	register int yy_is_jam;
+    	register char *yy_cp = (yy_c_buf_p);
 
-	YY_CHAR yy_c = 1;
+	register YY_CHAR yy_c = 1;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -2338,10 +2328,9 @@ static int yy_get_next_buffer (void)
 		return yy_is_jam ? 0 : yy_current_state;
 }
 
-#ifndef YY_NO_UNPUT
-    static void yyunput (int c, char * yy_bp )
+    static void yyunput (int c, register char * yy_bp )
 {
-	char *yy_cp;
+	register char *yy_cp;
     
     yy_cp = (yy_c_buf_p);
 
@@ -2351,10 +2340,10 @@ static int yy_get_next_buffer (void)
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		yy_size_t number_to_move = (yy_n_chars) + 2;
-		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+		register yy_size_t number_to_move = (yy_n_chars) + 2;
+		register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		char *source =
+		register char *source =
 				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
 
 		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
@@ -2379,7 +2368,6 @@ static int yy_get_next_buffer (void)
 	(yy_hold_char) = *yy_cp;
 	(yy_c_buf_p) = yy_cp;
 }
-#endif	/* ifndef YY_NO_UNPUT */
 
 #ifndef YY_NO_INPUT
 #ifdef __cplusplus
@@ -2785,7 +2773,7 @@ YY_BUFFER_STATE yy_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_len 
 	YY_BUFFER_STATE b;
 	char *buf;
 	yy_size_t n;
-	yy_size_t i;
+	int i;
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = _yybytes_len + 2;
@@ -2977,7 +2965,7 @@ int yylex_destroy  (void)
 #ifndef yytext_ptr
 static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 {
-	int i;
+	register int i;
 	for ( i = 0; i < n; ++i )
 		s1[i] = s2[i];
 }
@@ -2986,7 +2974,7 @@ static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 #ifdef YY_NEED_STRLEN
 static int yy_flex_strlen (yyconst char * s )
 {
-	int n;
+	register int n;
 	for ( n = 0; s[n]; ++n )
 		;
 
@@ -3018,7 +3006,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 202 "wrappedkey_lexer.l"
+#line 205 "wrappedkey_lexer.l"
 
 
 

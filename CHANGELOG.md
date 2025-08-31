@@ -4,10 +4,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# [UNPUBLISHED]
+### Added
+- support public key extraction for libraries with non-compliant `CKA_EC_POINT` implementations (with no OCTET STRING encapsulation)
+- support for Docker builds
+- `p11req` and `p11mkcert` now support RSA-PSS signature (add `-a pss` arguments to select it)
+- `p11kcv` beefed up, to support multiple MACing algorithms, as well as displaying the value of `CKA_CHECK_VALUE`
+- support for wrapping keys in JOSE Web Key format (JWK, RFC 7178)
+- new option `--enable-duplicate`, to override duplicate label protection when creating or importing a key (must be enabled at compile time)
+- search templates: it is now possible to add other attributes in a search, to filter out on more than one attribute
+
+### Fixed
+- small fix on with_xxx wrappers, replacing space with underscore in reply code
+
+# [2.6.0]
+### Added
+- support for AWS Cloud HSM. See [README.md] for limitations.
+
+### Fixed
+- with recent versions of GCC, compilation issue with lexx and yacc produced source code.
+- when `automake`<1.14 is used, use an older, compatible commit for `gnulib`
+
+### Updated
+- `gnulib` in now built from a stable branch, `stable-202307`
+
+# [2.5.1]
+- adding `-S` option flag for `p11keygen`, for enabling key generation when logged in as Security Officer (PR #33)
+- fixed a few memory management issues, preventing to import EC public keys when using `p11keygen`, `p11unwrap` and `p11importpubk`.
+
 # [2.5.0]
 ### Added
  - `CKA_ALLOWED_MECHANISMS` support for all key management utilities (`p11keygen`, `p11wrap`, `p11unwrap`, `p11rewrap`, `p11ls`, `p11od`)
- 
+
 ### Fixed
  - `p11wrap`: fixed memory leaks
 
@@ -124,6 +152,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial public release
 
+[2.6.0]: https://github.com/Mastercard/pkcs11-tools/tree/v2.6.0
+[2.5.1]: https://github.com/Mastercard/pkcs11-tools/tree/v2.5.1
 [2.5.0]: https://github.com/Mastercard/pkcs11-tools/tree/v2.5.0
 [2.4.2]: https://github.com/Mastercard/pkcs11-tools/tree/v2.4.2
 [2.4.1]: https://github.com/Mastercard/pkcs11-tools/tree/v2.4.1
@@ -144,4 +174,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.2]: https://github.com/Mastercard/pkcs11-tools/tree/v1.0.2
 [1.0.1]: https://github.com/Mastercard/pkcs11-tools/tree/v1.0.1
 [1.0.0]: https://github.com/Mastercard/pkcs11-tools/tree/v1.0.0
-

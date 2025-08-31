@@ -54,7 +54,19 @@ static int compare_CKM_desc( const void *a, const void *b)
 
 static int compare_CKM_type( const void *a, const void *b)
 {
-    return (int) (((MechanismDesc *)a)->type - ((MechanismDesc *)b)->type);
+    /* because we are making a comparison between unsigned long, int might not reflect well */
+    /* we need to use an intermediary value and divide it by itself (as absolute value)     */
+
+    /* we explicitely use "signed" as some platform (MIPS) seem to work with unsigned by default */
+    //avoiding undefined behaviour
+    MechanismDesc* mech_a = (MechanismDesc*)a;
+    MechanismDesc* mech_b = (MechanismDesc*)b;
+    if(!mech_a || !mech_b) {
+        fprintf(stderr, "***Error: failed to detect valid mechanism description...exiting.\n");
+        exit(rc_error_invalid_argument);
+    }
+    signed long long item = (signed long long)(mech_a->type) - (signed long long)(mech_b->type);
+    return item ? item/llabs(item) : 0;
 }
 
 CK_MECHANISM_TYPE pkcs11_get_mechanism_type_from_name(char *name)

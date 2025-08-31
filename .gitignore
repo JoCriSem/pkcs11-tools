@@ -10,8 +10,9 @@
 
 ## development tools
 .gdb_history
-.python_version
+.python-version
 *.patch
+.idea
 
 ## autotools
 /aclocal.m4
@@ -60,6 +61,11 @@ Makefile.in
 *~
 /TAGS
 
+# Linux distro files
+*.rpm
+*.deb
+*.apk
+
 # key files
 *.pubk
 *.prvk
@@ -69,4 +75,8 @@ Makefile.in
 
 # pkcs11 wrapper script files
 .pkcs11rc
+
+# VSCode
+.vscode/
+.clang-format
 
